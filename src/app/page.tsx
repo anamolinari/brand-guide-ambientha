@@ -14,30 +14,50 @@ const logos = [
   {
     id: "vert",
     label: "Vertical",
-    fileName: "vertical",
-    black: { svg: "/black/full-vert-b.svg", png: "/black/full-vert-b.png" },
-    white: { svg: "/white/full-vert-w.svg", png: "/white/full-vert-w.png" },
+    black: {
+      svg: "/black/ambientha-logo-vertical-preto.svg",
+      png: "/black/ambientha-logo-vertical-preto.png",
+    },
+    white: {
+      svg: "/white/ambientha-logo-vertical-branco.svg",
+      png: "/white/ambientha-logo-vertical-branco.png",
+    },
   },
   {
     id: "hor",
     label: "Horizontal",
-    fileName: "horizontal",
-    black: { svg: "/black/full-hor-b.svg", png: "/black/full-hor-b.png" },
-    white: { svg: "/white/full-hor-w.svg", png: "/white/full-hor-w.png" },
+    black: {
+      svg: "/black/ambientha-logo-horizontal-preto.svg",
+      png: "/black/ambientha-logo-horizontal-preto.png",
+    },
+    white: {
+      svg: "/white/ambientha-logo-horizontal-branco.svg",
+      png: "/white/ambientha-logo-horizontal-branco.png",
+    },
   },
   {
     id: "ret",
     label: "Retração",
-    fileName: "reduzido",
-    black: { svg: "/black/logo-ret-b.svg", png: "/black/logo-ret-b.png" },
-    white: { svg: "/white/logo-ret-w.svg", png: "/white/logo-ret-w.png" },
+    black: {
+      svg: "/black/ambientha-logo-reduzido-preto.svg",
+      png: "/black/ambientha-logo-reduzido-preto.png",
+    },
+    white: {
+      svg: "/white/ambientha-logo-reduzido-branco.svg",
+      png: "/white/ambientha-logo-reduzido-branco.png",
+    },
   },
   {
     id: "stamp",
     label: "Stamp",
-    fileName: "selo",
-    black: { svg: "/black/logo-stamp-b.svg", png: "/black/logo-stamp-b.png" },
-    white: { svg: "/white/logo-stamp-w.svg", png: "/white/logo-stamp-w.png" },
+    black: {
+      svg: "/black/ambientha-logo-selo-preto.svg",
+      png: "/black/ambientha-logo-selo-preto.png",
+    },
+    white: {
+      svg: "/white/ambientha-logo-selo-branco.svg",
+      png: "/white/ambientha-logo-selo-branco.png",
+    },
   },
 ];
 
@@ -69,15 +89,14 @@ export default function Home() {
     setTimeout(() => setCopiedHex(null), 1500);
   };
 
-  const handleDownload = (src: string, fileName: string) => {
-  const corPt = color === "black" ? "preto" : "branco";
-  const link = document.createElement("a");
-  link.href = src;
-  link.download = `ambientha-logo-${fileName}-${corPt}.${format}`;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
+  const handleDownload = (src: string) => {
+    const link = document.createElement("a");
+    link.href = src;
+    link.download = src.split("/").pop() || "ambientha-logo";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <main className="max-w-4xl mx-auto px-6 md:px-8 py-8 md:py-12">
@@ -199,7 +218,7 @@ export default function Home() {
             return (
               <button
                 key={logo.id}
-                onClick={() => handleDownload(src, logo.fileName)}
+                onClick={() => handleDownload(src)}
                 className={`rounded-xl p-8 cursor-pointer transition-all hover:scale-[1.02] ${
                   color === "black"
                     ? "bg-white border border-slate-200"
@@ -292,7 +311,7 @@ export default function Home() {
         <p className="text-slate-600 text-sm leading-relaxed">
           Qualquer dúvida, estamos por aqui.
         </p>
-  
+
 </section>
     </main>
   );
