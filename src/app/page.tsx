@@ -286,10 +286,12 @@ export default function Home() {
       </section>
 
       <section className="mt-16 pt-8 border-t border-slate-200">
-  <p className="text-slate-600 text-sm leading-relaxed">
-    Cuidar de cada detalhe faz parte de quem somos. Obrigada por levar isso adiante com a gente.
-  </p>
-        <p>Qualquer dúvida, estamos por aqui.</p>
+        <p className="text-slate-600 text-sm leading-relaxed">
+          Cuidar de cada detalhe faz parte de quem somos. Obrigada por levar isso adiante com a gente.
+        </p>
+        <p className="text-slate-600 text-sm leading-relaxed">
+          Qualquer dúvida, estamos por aqui.
+        </p>
   
 </section>
     </main>
